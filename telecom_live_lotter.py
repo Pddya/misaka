@@ -9,7 +9,7 @@
 """
 1. 脚本仅供学习交流使用, 请在下载后24h内删除
 2. 环境变量说明:
-    export TELECOM_LOTTERY = 手机号1&密码1换行手机号2&密码2
+    export TELECOM_LOTTERY = 手机号1@密码1换行手机号2@密码2
 3. 必须登录过 电信营业厅 app的账号才能正常运行
 """
 from re import findall
@@ -22,6 +22,7 @@ from datetime import datetime, timedelta
 from asyncio import wait, sleep, run
 
 import time
+import requests
 import json
 
 from tools.tool import timestamp, get_environ, print_now
@@ -123,7 +124,7 @@ class TelecomLotter:
         :return:
         """
         print_now(f"当前执行的直播间id为{liveId}")
-        for i in range(2):
+        for i in range(8):
             # active_code1 查询直播间购物车中的大转盘活动id
             active_code1 = self.get_action_id(liveId)
             # active_code2 查询直播间非购物车 而是右上角的大转盘活动id
@@ -191,7 +192,7 @@ def get_data():
             "user-agent": f"CtClient;9.6.1;Android;12;SM-G9860;{b64encode(random_phone[5:11].encode()).decode().strip('=+')}!#!{b64encode(random_phone[0:5].encode()).decode().strip('=+')}"
         }
         # print(url)
-        data = get(url, headers=headers).json()
+        data = requests.get(url, headers=headers).json()
         body = data["data"]
         for i in body:
             if time.strftime('%Y-%m-%d') in i['start_time']:
