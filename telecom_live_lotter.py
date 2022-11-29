@@ -132,7 +132,7 @@ class TelecomLotter:
             if active_code1 is not None or active_code2 is not None:
                 break
             print(f"此直播间暂无抽奖活动, 等待90秒后再次查询 剩余查询次数{7 - i}")
-            await sleep(90)
+            await sleep(40)
             continue
         if active_code1 is None and active_code2 is None:
             print("查询结束 本直播间暂无抽奖活动")
