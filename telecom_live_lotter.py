@@ -249,6 +249,7 @@ if __name__ == '__main__':
         list_d['liveRoom' + str(f)] = i
         f += 1
     print('数据加载完毕')
+    return list_d
     
     param = get_environ("TELECOM_LOTTERY")
     if param == "" :
