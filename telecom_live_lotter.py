@@ -200,15 +200,6 @@ def get_data(url):
                 print(i['start_time']+' 直播间名称：'+i['nickname'] ) 
                 all_list.append(i)
 
-list_d = {}
-    f = 1
-    for i in all_list:
-        list_d['liveRoom' + str(f)] = i
-        f += 1
-    print('数据加载完毕')
-
-
-
 
 def main(phone, password):
     apiType = 1
@@ -248,6 +239,13 @@ if __name__ == '__main__':
 
     for thread in threads:
         thread.join()
+
+    list_d = {}
+    f = 1
+    for i in all_list:
+        list_d['liveRoom' + str(f)] = i
+        f += 1
+    print('数据加载完毕')
 
    
     
